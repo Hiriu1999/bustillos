@@ -418,6 +418,46 @@
     }
     .mini-trust-item i{color:var(--gold);}
 
+
+    .services-section{background:#050505;padding:0 0 2.6rem;}
+    .services-box{
+      background:linear-gradient(160deg,#0f0f0f 0%, #050505 100%);
+      border:1px solid rgba(242,183,5,.22);
+      border-radius:1rem;
+      padding:1.15rem 1rem;
+      box-shadow:0 20px 55px rgba(0,0,0,.35);
+    }
+    .services-header h2{font-size:1.2rem;font-weight:800;text-transform:uppercase;letter-spacing:.02em;color:var(--gold);}
+    .services-header p{font-size:.68rem;color:rgba(255,255,255,.72);margin-top:.35rem;line-height:1.45;}
+    .services-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:.9rem;}
+    .service-card{
+      background:rgba(0,0,0,.35);
+      border:1px solid rgba(242,183,5,.24);
+      border-radius:.85rem;
+      padding:.8rem .75rem;
+      cursor:pointer;
+      transition:.18s ease;
+      min-height:140px;
+      display:flex;
+      flex-direction:column;
+      gap:.35rem;
+    }
+    .service-card:hover{transform:translateY(-2px);border-color:rgba(242,183,5,.65);box-shadow:0 15px 28px rgba(242,183,5,.14);}
+    .service-card.active{border-color:var(--gold);box-shadow:0 0 0 2px rgba(242,183,5,.12), 0 15px 32px rgba(242,183,5,.18);background:linear-gradient(160deg,rgba(242,183,5,.2) 0%, rgba(0,0,0,.42) 80%);}
+    .service-card h3{font-size:.74rem;font-weight:800;line-height:1.25;}
+    .service-card p{font-size:.6rem;color:rgba(255,255,255,.73);line-height:1.42;flex:1;}
+    .service-price{font-size:.72rem;font-weight:800;color:var(--gold);letter-spacing:.03em;}
+    .services-help{margin-top:.65rem;font-size:.58rem;color:rgba(255,255,255,.62);display:flex;gap:.35rem;align-items:center;}
+    .services-help i{color:var(--gold);}
+
+    .cart-box{margin-top:.85rem;background:rgba(0,0,0,.28);border:1px solid rgba(242,183,5,.28);border-radius:.75rem;padding:.75rem;}
+    .cart-box h3{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:.45rem;}
+    .cart-empty{font-size:.6rem;color:rgba(255,255,255,.6);}
+    .cart-list{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+    .cart-item{display:flex;justify-content:space-between;gap:.5rem;font-size:.6rem;color:rgba(255,255,255,.84);}
+    .cart-total{margin-top:.5rem;padding-top:.5rem;border-top:1px dashed rgba(242,183,5,.22);display:flex;justify-content:space-between;font-size:.64rem;font-weight:700;}
+
+
     .doctor-section{background:#000;padding:2.1rem 0 2.8rem;}
     .doctor-grid{
       display:grid;
@@ -467,11 +507,16 @@
       50%{opacity:.95; transform:scale(1.05);}
     }
 
+    @media(max-width:900px){
+      .services-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+    }
+
     @media(max-width:680px){
       .hero-title{font-size:2.35rem;}
       .hero{padding-top:5.3rem;}
       .header-btn{display:none;}
       .form-card{margin-top:.9rem;}
+      .services-grid{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -606,6 +651,61 @@
     </div>
   </section>
 
+  <!-- SERVICIOS -->
+  <section class="services-section" id="servicios">
+    <div class="container">
+      <div class="services-box">
+        <div class="services-header">
+          <h2>Servicios y precios</h2>
+          <p>Selecciona un servicio para autocompletar el formulario. Puedes elegir más de uno para armar tu carrito de interés.</p>
+        </div>
+
+        <div class="services-grid" id="servicesGrid">
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="manga_gastrica" data-price="14500">
+            <h3>Manga gástrica</h3>
+            <p>Procedimiento laparoscópico para control de peso con seguimiento médico integral.</p>
+            <div class="service-price">Desde S/ 14,500 PEN</div>
+          </div>
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="balon_gastrico" data-price="6500">
+            <h3>Balón gástrico</h3>
+            <p>Alternativa no quirúrgica para iniciar descenso de peso con evaluación especializada.</p>
+            <div class="service-price">Desde S/ 6,500 PEN</div>
+          </div>
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="cirugia_vesicula" data-price="4200">
+            <h3>Cirugía de vesícula</h3>
+            <p>Colecistectomía laparoscópica para cálculos o inflamación de vesícula biliar.</p>
+            <div class="service-price">Desde S/ 4,200 PEN</div>
+          </div>
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="cirugia_apendice" data-price="3900">
+            <h3>Cirugía de apéndice</h3>
+            <p>Atención quirúrgica de apendicitis aguda con protocolo de recuperación segura.</p>
+            <div class="service-price">Desde S/ 3,900 PEN</div>
+          </div>
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="cirugia_hernia" data-price="3600">
+            <h3>Cirugía de hernia</h3>
+            <p>Corrección de hernias abdominales e inguinales con técnica abierta o laparoscópica.</p>
+            <div class="service-price">Desde S/ 3,600 PEN</div>
+          </div>
+          <div class="service-card" role="button" tabindex="0" data-set-consulta="hemorroides" data-price="2300">
+            <h3>Hemorroides / Fístulas</h3>
+            <p>Evaluación y tratamiento quirúrgico de patología proctológica con privacidad total.</p>
+            <div class="service-price">Desde S/ 2,300 PEN</div>
+          </div>
+        </div>
+
+        <div class="services-help"><i class="fas fa-hand-pointer"></i> Al hacer click en una tarjeta se selecciona automáticamente en el formulario.</div>
+
+        <div class="cart-box" id="cartBox" aria-live="polite">
+          <h3>Carrito opcional</h3>
+          <p class="cart-empty" id="cartEmpty">Aún no agregaste servicios.</p>
+          <ul class="cart-list" id="cartList" style="display:none;"></ul>
+          <div class="cart-total" id="cartTotal" style="display:none;"><span>Total estimado</span><strong id="cartTotalAmount">S/ 0 PEN</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
   <!-- DOCTOR -->
   <section class="doctor-section" id="doctor">
     <div class="container">
@@ -652,6 +752,7 @@
 
       // ✅ WhatsApp destino (E.164 Perú) = 51992944613
       const WHATSAPP_PHONE   = '51992944613';
+      const CART_ENABLED    = true;
 
       // ✅ FIX CRÍTICO: envío robusto para navegadores in-app (Meta/TikTok)
       function sendToMake(url, payload) {
@@ -711,6 +812,54 @@
         } catch (e) {}
       }
 
+
+      const cartItems = new Set();
+
+      function formatPEN(value){
+        return `S/ ${Number(value || 0).toLocaleString('es-PE')} PEN`;
+      }
+
+      function getServiceMeta(value){
+        const card = document.querySelector(`.service-card[data-set-consulta="${value}"]`);
+        if (!card) return null;
+        return {
+          value,
+          name: card.querySelector('h3')?.textContent?.trim() || value,
+          price: Number(card.getAttribute('data-price') || 0)
+        };
+      }
+
+      function renderCart(){
+        const cartBox = document.getElementById('cartBox');
+        const cartEmpty = document.getElementById('cartEmpty');
+        const cartList = document.getElementById('cartList');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartTotalAmount = document.getElementById('cartTotalAmount');
+        if (!cartBox || !cartEmpty || !cartList || !cartTotal || !cartTotalAmount) return;
+
+        if (!CART_ENABLED) {
+          cartBox.style.display = 'none';
+          return;
+        }
+
+        const metas = [...cartItems].map(getServiceMeta).filter(Boolean);
+        if (!metas.length) {
+          cartEmpty.style.display = 'block';
+          cartList.style.display = 'none';
+          cartTotal.style.display = 'none';
+          cartList.innerHTML = '';
+          cartTotalAmount.textContent = formatPEN(0);
+          return;
+        }
+
+        cartEmpty.style.display = 'none';
+        cartList.style.display = 'flex';
+        cartTotal.style.display = 'flex';
+        cartList.innerHTML = metas.map(item => `<li class="cart-item"><span>${item.name}</span><strong>${formatPEN(item.price)}</strong></li>`).join('');
+        const total = metas.reduce((acc, item) => acc + item.price, 0);
+        cartTotalAmount.textContent = formatPEN(total);
+      }
+
       // header scroll
       try {
         window.addEventListener('scroll', () => {
@@ -759,6 +908,14 @@
           const v = ch.getAttribute('data-set-consulta');
           ch.classList.toggle('active', v === consultaEl.value);
         });
+
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+          const v = card.getAttribute('data-set-consulta');
+          card.classList.toggle('active', v === consultaEl.value || cartItems.has(v));
+        });
+
+        renderCart();
       }
 
       // cambio de motivo
@@ -798,6 +955,30 @@
             if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setVal(); }
           });
         });
+
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+          const setVal = () => {
+            const v = card.getAttribute('data-set-consulta');
+            const select = document.getElementById('consulta');
+            if (!select || !v) return;
+
+            select.value = v;
+            if (CART_ENABLED) {
+              if (cartItems.has(v)) cartItems.delete(v);
+              else cartItems.add(v);
+            } else {
+              cartItems.clear();
+            }
+            select.dispatchEvent(new Event('change', { bubbles: true }));
+            select.focus();
+          };
+          card.addEventListener('click', setVal);
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setVal(); }
+          });
+        });
+        renderCart();
 
       } catch(e){}
 
@@ -844,7 +1025,8 @@
             timestamp_iso: new Date().toISOString(),
             fuente: 'landing_drbustillos',
             page_url: window.location.href,
-            user_agent: navigator.userAgent
+            user_agent: navigator.userAgent,
+            carrito_servicios: [...cartItems]
           };
 
           // 1) enviar al CRM (Make) y esperar un poco (máx 1.8s) para evitar corte por redirección
@@ -886,6 +1068,7 @@
             `👤 *Paciente:* ${payload.nombre}\n` +
             `📱 *WhatsApp:* +51 ${phoneDigits}\n` +
             `📝 *Motivo:* ${consulta_label}\n` +
+            `${payload.carrito_servicios.length ? `🛒 *Interés adicional:* ${payload.carrito_servicios.join(', ')}\n` : ''}` +
             `✅ *Compromiso:* ${payload.compromiso ? 'Sí, asistiré' : 'No indicado'}\n\n` +
             `Buen día 👋 Vengo del formulario y estoy interesado(a). ¿Me podría indicar por favor el día y la hora disponibles?`;
 
